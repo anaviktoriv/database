@@ -46,8 +46,21 @@ CREATE TABLE chambre
     degre_confort Int NOT NULL,
     chambre_capacite Int NOT NULL,
     hotel_id Int NOT NULL
-    ,
-    CONSTRAINT hotel_PK PRIMARY KEY (hotel_id)
 ,
-    CONSTRAINT hotel_station_FK FOREIGN KEY (station_id) REFERENCES station (station_id)
+    CONSTRAINT chambre_PK PRIMARY KEY (chambre_id)
+,
+    CONSTRAINT chambre_hotel_FK FOREIGN KEY (hotel_id) REFERENCES hotel (hotel_id)
+);
+
+CREATE TABLE reservation
+(
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
+    date_reservation DATE NOT NULL,
+    montant_accompte MONEY NOT NULL,
+    prix_total MONEY NOT NULL,
+    chambre_id Int NOT NULL,
+    client_id INT NOT NULL
+    ,
+    CONSTRAINT 
 );
