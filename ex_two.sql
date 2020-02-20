@@ -21,8 +21,7 @@ CREATE TABLE station
     station_id INT NOT NULL,
     station_nom VARCHAR(50) NOT NULL
     ,
-    CONSTRAINT station_PK PRIMARY KEY
-    (station_id)
+    CONSTRAINT station_PK PRIMARY KEY(station_id)
 );
 
 CREATE TABLE hotel
