@@ -57,10 +57,17 @@ CREATE TABLE reservation
     date_debut DATE NOT NULL,
     date_fin DATE NOT NULL,
     date_reservation DATE NOT NULL,
-    montant_accompte MONEY NOT NULL,
-    prix_total MONEY NOT NULL,
+    montant_accompte DECIMAL(7,2) NOT NULL,
+    prix_total DECIMAL(7,2) NOT NULL,
     chambre_id Int NOT NULL,
     client_id INT NOT NULL
+
     ,
-    CONSTRAINT 
+    CONSTRAINT reservation_chambre_client_PK PRIMARY KEY (chambre_id, client_id)
+    ,
+    CONSTRAINT reservation_chambre_FK FOREIGN KEY (chambre_id) REFERENCES chambre (chambre_id)
+    ,
+    CONSTRAINT reservation_client_FK FOREIGN KEY (client_id) REFERENCES client (client_id)
+
+
 );
