@@ -22,7 +22,7 @@ CREATE TABLE produit
 
 CREATE TABLE fournis
 (
-    numfou VARCHAR(25) NOT NULL,
+    numfou INT NOT NULL,
     nomfou VARCHAR(25) NOT NULL,
     ruefou VARCHAR(50) NOT NULL,
     posfou CHAR(5) NOT NULL,
@@ -34,25 +34,48 @@ CREATE TABLE fournis
     CONSTRAINT numfou_PK PRIMARY KEY (numfou)
 );
 
+
+---------------------------------------------------------------------------------------------------------------------------
+INSERT INTO fournis (numfou, nomfou, ruefou, posfou, vilfou, confou, satisf)
+VALUES (120, "GROBRIGAN", "20 rue du papier", "92200", "papercity", "Georges", 08),
+       (540, "ECLIPSE ", "53, rue laisse flotter les rubans ", "78250 ", "Bugbugville", "Nestor", 07),
+       (8700, "MEDICIS", "120 rue des plantes", "75014", "Paris", "Lison", NULL),
+       (9120, "DISCOBOL", "11 rue des sports", "85100", "La Roche sur Yon", "Hercule", 08),
+	(9150, 'DEPANPAP', '26 avenue des locomotives', '59987', 'Coroncountry', 'Pollux', 5),
+	(9180, 'HURRYTAPE', '68 boulevard des octets', '4044', 'Dumpville', 'Track', 0);
+
+
+
+
+
 -- table ???
 
 CREATE TABLE entcom
 (
-    numcom INT(10)
-    AUTO_INCREMENT NOT NULL,
-    obscom VARCHAR
-    (50),
+    numcom INT(10) AUTO_INCREMENT NOT NULL,
+    obscom VARCHAR(50),
     datcom DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    numfou VARCHAR
-    (25)
-    ,
-    CONSTRAINT numcom_PK PRIMARY KEY
-    (numcom)
-    ,
-    CONSTRAINT entcom_fournis_FK FOREIGN KEY
-    (numfou) REFERENCES fournis
-    (numfou)
+    numfou VARCHAR(25)
+    
+    ,CONSTRAINT numcom_PK PRIMARY KEY(numcom)
+    ,CONSTRAINT entcom_fournis_FK FOREIGN KEY (numfou) REFERENCES fournis(numfou)
 );
+
+INSERT INTO entcom (numcom, obscom, datcom, numfou) VALUES
+	(70010, '', '2018-04-23 15:59:51', 120),
+	(70011, 'Commande urgente', '2018-04-23 15:59:51', 540),
+	(70020, '', '2018-04-23 15:59:51', 9120),
+	(70025, 'Commande urgente', '2018-04-23 15:59:51', 9150),
+	(70210, 'Commande cadencée', '2018-04-23 15:59:51', 120),
+	(70250, 'Commande cadencée', '2018-04-23 15:59:51', 8700),
+	(70300, '', '2018-04-23 15:59:51', 9120),
+	(70620, '', '2018-04-23 15:59:51', 540),
+	(70625, '', '2018-04-23 15:59:51', 120),
+	(70629, '', '2018-04-23 15:59:51', 9180);
+
+
+
+
 
     -- create table ??? !!!!!datetime as well as time and time stamp can have  fractional seconds part (up to 6)
     CREATE TABLE ligcom
