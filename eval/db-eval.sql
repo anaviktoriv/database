@@ -9,7 +9,7 @@ USE db_eval;
 
 
 CREATE TABLE client (
-    cli_num INT NOT NULL,
+    cli_num INT NOT NULL AUTO_INCREMENT,
     cli_nom VARCHAR(50),
     cli_adresse VARCHAR(50),
     cli_tel VARCHAR(50)
@@ -19,7 +19,7 @@ CREATE TABLE client (
 
 
 CREATE TABLE produit (
-pro_num INT NOT NULL,
+pro_num INT NOT NULL AUTO_INCREMENT,
 pro_libelle VARCHAR(50),
 pro_description VARCHAR(50)
 
@@ -29,7 +29,7 @@ pro_description VARCHAR(50)
 
 
 CREATE TABLE commande (
-com_num INT NOT NULL,
+com_num INT NOT NULL AUTO_INCREMENT,
 com_date DATETIME,
 com_obs VARCHAR(50),
 cli_num INT
